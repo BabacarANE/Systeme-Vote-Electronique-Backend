@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('role_electeurs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('personne_id')->constrained()->onDelete('cascade');
+            $table->string('numero_electeur')->unique();
+            $table->boolean('a_voter')->default(false);
             $table->timestamps();
         });
     }

@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bureau_de_votes', function (Blueprint $table) {
+        Schema::create('bureaux_de_vote', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('statut');
+            $table->integer('nombre_inscrits');
+            $table->foreignId('centre_de_vote_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('journal_utilisateurs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_utilisateur_id')->constrained()->onDelete('cascade');
+            $table->string('action');
+            $table->timestamp('horodatage');
             $table->timestamps();
         });
     }

@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('entite_administratives', function (Blueprint $table) {
+        Schema::create('entites_administratives', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('code')->unique();
+            $table->string('type'); // 'pays', 'region', 'departement', 'commune'
+            $table->foreignId('parent_id')->nullable()->constrained('entites_administratives')->onDelete('cascade');
             $table->timestamps();
         });
     }

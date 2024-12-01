@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('affectations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('bureau_de_vote_id')->constrained()->onDelete('cascade');
+            $table->foreignId('role_personnel_bv_id')->constrained()->onDelete('cascade');
+            $table->foreignId('election_id')->constrained()->onDelete('cascade');
+            $table->string('code_role');
+            $table->date('date_debut');
+            $table->date('date_fin');
+            $table->boolean('statut');
+            $table->date('date_creation');
             $table->timestamps();
         });
     }

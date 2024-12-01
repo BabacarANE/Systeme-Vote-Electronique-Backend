@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resultat_bureau_votes', function (Blueprint $table) {
+        Schema::create('resultats_bureau_vote', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('bureau_de_vote_id')->constrained()->onDelete('cascade');
+            $table->integer('nombre_votants');
+            $table->integer('bulletins_nuls');
+            $table->integer('bulletins_blancs');
+            $table->integer('suffrages_exprimes');
+            $table->string('pv');
+            $table->boolean('validite');
             $table->timestamps();
         });
     }

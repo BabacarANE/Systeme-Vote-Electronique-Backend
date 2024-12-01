@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('role_candidats', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('personne_id')->constrained()->onDelete('cascade');
+            $table->string('parti');
+            $table->string('code')->unique();
+            $table->string('profession');
             $table->timestamps();
         });
     }

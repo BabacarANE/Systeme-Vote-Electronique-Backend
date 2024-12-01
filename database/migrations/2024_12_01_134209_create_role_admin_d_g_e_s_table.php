@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('role_admin_d_g_e_s', function (Blueprint $table) {
+        Schema::create('role_admin_dge', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_utilisateur_id')->constrained()->onDelete('cascade');
+            $table->string('code')->unique();
+            $table->string('niveau_acces');
             $table->timestamps();
         });
     }

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('role_utilisateurs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('personne_id')->constrained()->onDelete('cascade');
+            $table->string('email')->unique();
+            $table->string('mot_de_passe');
+            $table->boolean('est_actif')->default(true);
             $table->timestamps();
         });
     }
